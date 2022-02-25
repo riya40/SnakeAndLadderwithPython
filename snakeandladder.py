@@ -49,3 +49,26 @@ def check_ladder(prev_point, dice_value):
 
 def check_win(new_pos):
     return new_pos == WIN_POINT
+
+
+def play(prev_pos):
+    dice = throw_dice()
+    is_snake = check_snake(prev_pos, dice)
+    is_ladder = check_ladder(prev_pos, dice)
+    if is_snake < prev_pos:  # if snake return snake value
+        print("snake position appeared:", is_snake)
+        return is_snake
+    else:
+        # if snake dont check for ledder / if ledder return ledder value
+        if is_ladder > prev_pos:
+            print("ladder position appeared:", is_ladder)
+            return is_ladder
+    i_won = check_win(is_ladder)  # if snake or ledder is there aviod win call
+    if i_won:
+        return -1
+    else:
+        return is_ladder
+
+
+def throw_dice():
+    return random.randint(1, 6)
