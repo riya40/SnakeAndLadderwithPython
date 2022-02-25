@@ -72,3 +72,18 @@ def play(prev_pos):
 
 def throw_dice():
     return random.randint(1, 6)
+
+
+player1 = 0
+player2 = 0
+
+while True:
+    player1 = play(player1)
+    if player1 == -1:
+        print('player1! you won')
+        break
+
+    player2 = play(player2)
+    if player2 == -1:
+        print('player 2! you won')
+        break
