@@ -1,4 +1,5 @@
 import random
+
 """Welcome To  Snake and Ladder game
 Initiating the values for snake ,ladder,and winpoint
 Initiating the methods for Snake and Ladder"""
@@ -34,3 +35,17 @@ def check_snake(prev_pos, dice):
     return prev_pos
 
 
+def check_ladder(prev_point, dice_value):
+    new_pos = prev_point + dice_value
+    if new_pos <= WIN_POINT:
+        _ladder = LADDER.get(new_pos)
+        if _ladder:
+            print("ladder appered", _ladder)
+            return _ladder
+        else:
+            return new_pos
+    return prev_point
+
+
+def check_win(new_pos):
+    return new_pos == WIN_POINT
